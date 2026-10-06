@@ -1,0 +1,29 @@
+/* Bienvenido. En este kata, se te pide que cuadres cada dígito de un número y los concatenes.
+
+Por ejemplo, si ejecutamos 9119 a través de la función, 811181 saldrá, porque 92 es 81 y 12 es 1. (81-1-1-81)
+
+Ejemplo #2: Una entrada de 765 devolverá 493625 porque 72 es 49, 62 es 36 y 52 tiene 25. (49-36-25)
+
+Nota: La función acepta un entero no negativo y devuelve un entero.
+
+¡Feliz programación!*/
+
+
+
+public class SquareDigit {
+
+
+
+    public int squareDigits(int n) {
+
+        String numero = String.valueOf(n);
+        String resultado = "";
+
+        for (char c : numero.toCharArray()) {
+            int digito = c - '0';
+            resultado += digito * digito;
+        }
+
+        return Integer.parseInt(resultado);
+    }
+}

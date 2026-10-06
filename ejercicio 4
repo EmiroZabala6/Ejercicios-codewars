@@ -1,0 +1,10 @@
+public class NumberFun {
+  public static long findNextSquare(long sq) {
+      long raiz = (long) Math.sqrt(sq);
+    if (raiz * raiz != sq){
+      return -1;
+    }
+    raiz++;
+    return raiz * raiz
+  }
+}
