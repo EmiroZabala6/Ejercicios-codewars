@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class TimeFormatter {
+    public static String formatDuration(int seconds) {
+        if (seconds == 0) return "now";
+
+        int years = seconds / (365 * 24 * 3600);
+        seconds %= 365 * 24 * 3600;
+        int days = seconds / (24 * 3600);
+        seconds %= 24 * 3600;
+        int hours = seconds / 3600;
+        seconds %= 3600;
+        int minutes = seconds / 60;
+        seconds %= 60;
+
+        List<String> parts = new ArrayList<>();
+        if (years > 0) parts.add(years + " year" + (years > 1 ? "s" : ""));
+        if (days > 0) parts.add(days + " day" + (days > 1 ? "s" : ""));
+        if (hours > 0) parts.add(hours + " hour" + (hours > 1 ? "s" : ""));
+        if (minutes > 0) parts.add(minutes + " minute" + (minutes > 1 ? "s" : ""));
+        if (seconds > 0) parts.add(seconds + " second" + (seconds > 1 ? "s" : ""));
+
+        if (parts.size() == 1) return parts.get(0);
+
+        String last = parts.remove(parts.size() - 1);
+        return String.join(", ", parts) + " and " + last;
+    }
+}
