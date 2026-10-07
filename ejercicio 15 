@@ -1,0 +1,24 @@
+import java.util.*;
+import java.util.regex.*;
+
+public class TopWords {
+    public static List<String> top3(String s) {
+        if (s == null || s.isEmpty()) return Collections.emptyList();
+
+        Pattern pattern = Pattern.compile("[a-zA-Z']+");
+        Matcher matcher = pattern.matcher(s.toLowerCase());
+
+        Map<String, Integer> freq = new HashMap<>();
+        while (matcher.find()) {
+            String word = matcher.group();
+            if (word.replace("'", "").isEmpty()) continue;
+            freq.put(word, freq.getOrDefault(word, 0) + 1);
+        }
+
+        return freq.entrySet().stream()
+                .sorted((a, b) -> b.getValue().compareTo(a.getValue()))
+                .limit(3)
+                .map(Map.Entry::getKey)
+                .toList();
+    }
+}

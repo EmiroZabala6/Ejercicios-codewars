@@ -1,0 +1,11 @@
+public class Max {
+    public static int sequence(int[] arr) {
+        int maxSoFar = 0;
+        int maxEndingHere = 0;
+        for (int num : arr) {
+            maxEndingHere = Math.max(0, maxEndingHere + num);
+            maxSoFar = Math.max(maxSoFar, maxEndingHere);
+        }
+        return maxSoFar;
+    }
+}
