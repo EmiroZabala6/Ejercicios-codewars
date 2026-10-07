@@ -1,0 +1,15 @@
+public class NumberUtils {
+
+    public static boolean isNarcissistic(int number) {
+      String numStr = String.valueOf(number);
+      int numDigits = numStr.length();
+      
+      int sum = 0;
+       for (char c : numStr.toCharArray()) {
+        int digit = Character.getNumericValue(c);
+        sum += Math.pow(digit,numDigits);
+      }
+        return sum == number;
+    }
+
+}
