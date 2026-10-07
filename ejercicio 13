@@ -1,0 +1,14 @@
+public class Order {
+    public static String order(String words) {
+        if (words == null || words.isEmpty()) {
+            return "";
+        }
+        String[] splitWords = words.split(" ");
+        String[] ordered = new String[splitWords.length];
+        for (String word : splitWords) {
+            int position = Integer.parseInt(word.replaceAll("\\D", ""));
+            ordered[position - 1] = word;
+        }
+        return String.join(" ", ordered);
+    }
+}
